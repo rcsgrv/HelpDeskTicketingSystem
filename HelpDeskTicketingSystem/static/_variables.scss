@@ -1,0 +1,26 @@
+@use 'sass:color';
+
+// Colours
+$color-text-primary: #222;
+$color-text-secondary: #555;
+$color-bg-primary: #fafafa;
+$color-bg-secondary: #fff;
+$color-accent: #007BFF;
+$color-accent-hover: color.adjust($color-accent, $lightness: -10%);
+$color-border: #ddd;
+$color-error-bg: #f8d7da;
+$color-error-text: #842029;
+$color-success-bg: #d1e7dd;
+$color-success-text: #0f5132;
+
+// Fonts 
+$font-family-base: 'Segoe UI', sans-serif;
+$font-size-base: 16px;
+
+// Spacing
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+
+// Border radius
+$border-radius: 6px;

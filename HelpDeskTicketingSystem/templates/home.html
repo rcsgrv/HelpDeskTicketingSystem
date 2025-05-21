@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Help Desk Home {% endblock %}
+
+{% block content %}
+  <head class="head">Your Tickets</head>
+
+  <div class="form">
+    <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-primary">Create New Ticket</a>
+  </div>
+
+  {% if tickets %}
+    <div class="list-group">
+      {% for ticket in tickets %}
+        <div class="ticket-card ticket-card--list">
+          <h2>{{ ticket.subject }}</h2>
+          <p>Status: {{ ticket.status }}</p>
+          <p>Priority: {{ ticket.priority }}</p>
+          <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-tickets">No tickets are associated with this user.</p>
+  {% endif %}
+{% endblock %}

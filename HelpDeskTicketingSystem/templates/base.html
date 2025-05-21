@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+    <title>{% block title %} Help Desk Home {% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a class="navbar-brand" href="/">Ticket Help Desk</a>
+          <ul class="navbar-links">
+            {% if current_user.is_authenticated %}
+              <li><a href="/">Home</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {% else %}
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Register</a></li>
+            {% endif %}
+          </ul>
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="alert">
+          {% for category, message in messages %}
+            {% if category == 'error' %}
+              <div class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+            {% else %}
+              <div class="alert alert-success" role="alert">
+                {{ message }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <main class="container main-content">
+      {% block content %} {% endblock %}
+    </main>
+  </body>
+</html>
