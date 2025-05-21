@@ -2,19 +2,23 @@
 {% block title %} Help Desk Home {% endblock %}
 
 {% block content %}
-  <head class="head">Your Tickets</head>
+  <h1 class="page-title">Your Tickets</h1>
 
-  <div class="form">
+  <div class="btn-group">
     <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-primary">Create New Ticket</a>
   </div>
+
+  <br>
 
   {% if tickets %}
     <div class="list-group">
       {% for ticket in tickets %}
         <div class="ticket-card ticket-card--list">
-          <h2>{{ ticket.subject }}</h2>
-          <p>Status: {{ ticket.status }}</p>
-          <p>Priority: {{ ticket.priority }}</p>
+          <div class="ticket-content">
+            <h2>{{ ticket.subject }}</h2>
+            <p>Status: {{ ticket.status }}</p>
+            <p>Priority: {{ ticket.priority }}</p>
+          </div>
           <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View</a>
         </div>
       {% endfor %}

@@ -13,7 +13,7 @@ def create_ticket():
         description = request.form.get('description')
         status = request.form.get('status')
         priority = request.form.get('priority')
-        time_estimate = request.form.get('time_estimate')
+        estimated_time = request.form.get('estimated_time')
 
         if len(subject) < 1:
             flash('Subject cannot be blank.', category='error')
@@ -85,11 +85,11 @@ def edit_ticket(ticket_id):
         ticket.description = request.form.get('description')
         ticket.status = request.form.get('status')
         ticket.priority = request.form.get('priority')
-        ticket.time_estimate = request.form.get('time_estimate')
+        ticket.estimated_time = request.form.get('estimated_time')
 
         db.session.commit()
         flash('Ticket updated successfully.', category='success')
-        return redirect(url_for('tickets.view_ticket', ticket_id=ticket.id))
+        return redirect(url_for('tickets.ticket_details', ticket_id=ticket.id))
 
     return render_template('edit_ticket.html', ticket=ticket)
 

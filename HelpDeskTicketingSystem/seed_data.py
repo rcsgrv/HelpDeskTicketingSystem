@@ -42,7 +42,7 @@ def populate_dummy_data():
         'Expected vs actual results differ.',
         'New ticket for development testing.',
         'This appears only on mobile.',
-        'Firefox shows different behavior.',
+        'Firefox shows different behaviour.',
         'Investigate logs for error stack trace.',
         'Maybe a caching issue?',
         'Seen after last deployment.',

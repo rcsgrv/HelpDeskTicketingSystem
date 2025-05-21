@@ -2,23 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
     <title>{% block title %} Help Desk Home {% endblock %}</title>
   </head>
   <body>
     <nav class="navbar">
       <div class="nav-container">
-        <a class="navbar-brand" href="/">Ticket Help Desk</a>
-          <ul class="navbar-links">
-            {% if current_user.is_authenticated %}
-              <li><a href="/">Home</a></li>
-              <li><a href="/logout">Logout</a></li>
-            {% else %}
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Register</a></li>
-            {% endif %}
-          </ul>
+        <span class="navbar-brand">Ticket Help Desk</span>
+        <ul class="navbar-links">
+          {% if current_user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+          {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+          {% endif %}
+        </ul>
       </div>
     </nav>
 

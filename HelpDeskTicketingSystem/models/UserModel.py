@@ -9,4 +9,3 @@ class User(db.Model, UserMixin):
     forename = db.Column(db.String(150))
     surname = db.Column(db.String(150))
     account_type = db.Column(db.String(20), nullable=False)
-    tickets = db.relationship('Ticket')
