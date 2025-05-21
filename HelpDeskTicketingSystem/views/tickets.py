@@ -27,10 +27,10 @@ def create_ticket():
             flash('You must select a priority.', category='error')
         elif not status:
             flash('You must select a status.', category='error')
-        elif time_estimate:
+        elif estimated_time:
             try:
-                time_estimate_val = float(time_estimate)
-                if time_estimate_val < 0:
+                estimated_time_val = float(time_estimate)
+                if estimated_time_val < 0:
                     flash('Estimated time cannot be < 1 hours.', category='error')
                     return render_template('tickets.create_ticket.html', user=current_user)
             except ValueError:
@@ -42,7 +42,7 @@ def create_ticket():
                 description=description,
                 priority=priority,
                 status=status,
-                time_estimate=float(time_estimate) if time_estimate else None,
+                time_estimate=float(estimated_time) if estimated_time else None,
                 user_id=current_user.id
             )
             db.session.add(new_ticket)
