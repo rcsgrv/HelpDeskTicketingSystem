@@ -29,7 +29,7 @@ def create_ticket():
             flash('You must select a status.', category='error')
         elif estimated_time:
             try:
-                estimated_time_val = float(time_estimate)
+                estimated_time_val = float(estimated_time)
                 if estimated_time_val < 0:
                     flash('Estimated time cannot be < 1 hours.', category='error')
                     return render_template('tickets.create_ticket.html', user=current_user)
