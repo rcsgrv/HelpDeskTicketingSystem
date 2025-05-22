@@ -42,7 +42,7 @@ def create_ticket():
                 description=description,
                 priority=priority,
                 status=status,
-                time_estimate=float(estimated_time) if estimated_time else None,
+                estimated_time=float(estimated_time) if estimated_time else None,
                 user_id=current_user.id
             )
             db.session.add(new_ticket)
