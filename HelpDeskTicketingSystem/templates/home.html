@@ -1,18 +1,29 @@
 {% extends "base.html" %}
-{% block title %} Help Desk Home {% endblock %}
+{% block title %} Dashboard {% endblock %}
 
 {% block content %}
-  <h1 class="page-title">Your Tickets</h1>
+  <h1 class="page-title">Welcome, {{ user.forename }}</h1>
 
-  <div class="btn-group">
-    <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-primary">Create New Ticket</a>
+  <div class="create-ticket-wrapper">
+    <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-primary btn-new-ticket">Create New Ticket</a>
+  </div>
+
+  <div class="per-page-form-wrapper">
+  <form method="get" action="{{ url_for('home.home') }}" class="per-page-form">
+    <label for="per_page">Tickets per page:</label>
+    <select name="per_page" id="per_page" onchange="this.form.submit()">
+      {% for option in [5, 10, 15, 20] %}
+        <option value="{{ option }}" {% if per_page == option %}selected{% endif %}>{{ option }}</option>
+      {% endfor %}
+    </select>
+  </form>
   </div>
 
   <br>
 
-  {% if tickets %}
+  {% if tickets.items %}
     <div class="list-group">
-      {% for ticket in tickets %}
+      {% for ticket in tickets.items %}
         <div class="ticket-card ticket-card--list">
           <div class="ticket-content">
             <h2>{{ ticket.subject }}</h2>
@@ -22,6 +33,18 @@
           <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View</a>
         </div>
       {% endfor %}
+    </div>
+
+    <div class="pagination">
+      {% if tickets.has_prev %}
+        <a href="{{ url_for('home.home', page=tickets.prev_num, per_page=per_page) }}" class="btn btn-secondary">Previous</a>
+      {% endif %}
+
+      Page {{ tickets.page }} of {{ tickets.pages }}
+
+      {% if tickets.has_next %}
+        <a href="{{ url_for('home.home', page=tickets.next_num, per_page=per_page) }}" class="btn btn-secondary">Next</a>
+      {% endif %}
     </div>
   {% else %}
     <p class="no-tickets">No tickets are associated with this user.</p>

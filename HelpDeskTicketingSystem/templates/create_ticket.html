@@ -1,33 +1,36 @@
 {% extends "base.html" %}
 {% block title %} Create Ticket {% endblock %}
+
 {% block content %}
   <form method="POST" class="form">
     <h3>Create a Ticket</h3>
 
     <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject" required />
+    <input type="text" id="subject" name="subject" required
+           value="{{ subject | default('') }}" />
 
     <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea>
+    <textarea id="description" name="description" required>{{ description | default('') }}</textarea>
 
     <label for="status">Status:</label>
     <select id="status" name="status" required>
-      <option value="" disabled selected>Select a Status</option>
-      <option value="Open">Open</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Closed">Closed</option>
+      <option value="" disabled {% if not status %}selected{% endif %}>Select a Status</option>
+      <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
+      <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
+      <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
     </select>
 
     <label for="priority">Priority:</label>
     <select id="priority" name="priority" required>
-      <option value="" disabled selected>Select a Priority</option>
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="High">High</option>
+      <option value="" disabled {% if not priority %}selected{% endif %}>Select a Priority</option>
+      <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
+      <option value="Medium" {% if priority == 'Medium' %}selected{% endif %}>Medium</option>
+      <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
     </select>
 
     <label for="estimated_time">Estimated Time (in hours):</label>
-      <input type="number" id="estimated_time" name="estimated_time" step="0.5" min="1" required>
+    <input type="number" id="estimated_time" name="estimated_time" step="0.5" min="1" required
+           value="{{ estimated_time | default(1) }}" />
 
     <div class="btn-group">
       <a href="{{ url_for('home.home') }}" class="btn btn-secondary">Cancel</a>
