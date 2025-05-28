@@ -1,7 +1,9 @@
+@use 'variables' as v;
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: v.$font-family-base;
   font-size: 16px;
   line-height: 1.5;
   color: #222;
@@ -13,7 +15,7 @@ body {
     color: #222;
     margin: 24px 0;
     text-align: center;
-    font-family: "Segoe UI", sans-serif;
+    font-family: v.$font-family-base;
   }
 }
 
@@ -45,46 +47,48 @@ p {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 0;
   margin-bottom: 24px;
-}
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: right;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.navbar-brand {
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.25rem;
-  text-decoration: none;
-  padding: 14px 16px;
-}
-
-.navbar-links {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  li {
-    margin-left: 16px;
+  .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;            
+    max-width: auto;
+    margin: 0 auto;
+    padding: 0 16px;
   }
 
-  a {
-    display: block;
-    padding: 14px 16px;
+  .navbar-brand {
     color: #fff;
+    font-weight: 700;
+    font-size: 1.25rem;
     text-decoration: none;
-    font-weight: 600;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    padding: 14px 16px;
+  }
 
-    &:hover {
-      background-color: #0056b3;
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    margin-left: auto;
+
+    li {
+      margin-left: 16px;
+    }
+
+    a {
+      display: block;
+      padding: 14px 16px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
     }
   }
 }
@@ -280,7 +284,7 @@ p {
   }
 }
 
-.ticket-card {
+.entity-card {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -304,7 +308,7 @@ p {
   }
 }
 
-.ticket-card--list {
+.entity-card--list {
   position: relative;
   max-width: 800px;
   margin-left: auto;
@@ -332,25 +336,25 @@ p {
     }
   }
 
-  .ticket-title {
+  .entity-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
 
-  .ticket-subtitle {
+  .entity-subtitle {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
 }
 
-.ticket-card--details {
+.entity-card--details {
   background-color: #f9f9f9;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
 
-  .ticket-title {
+  .entity-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }

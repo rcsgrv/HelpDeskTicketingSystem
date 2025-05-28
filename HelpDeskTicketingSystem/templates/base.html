@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
     <title>{% block title %} Help Desk Home {% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <span class="navbar-brand">Ticket Help Desk</span>
-        <ul class="navbar-links">
-          {% if current_user.is_authenticated %}
-            <li><a href="/">Home</a></li>
-            <li><a href="/logout">Logout</a></li>
-          {% else %}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
+  <nav class="navbar">
+  <div class="nav-container">
+  <div class="navbar-brand">Ticket Help Desk</div>
+  <ul class="navbar-links">
+    {% if current_user.is_authenticated %}
+      <li><a href="{{ url_for('home.home') }}">Home</a></li>
+      <li><a href="{{ url_for('auth.profile') }}">Profile</a></li>
+      <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+    {% else %}
+      <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+    {% endif %}
+  </ul>
+</div>
+</nav>
+
 
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}

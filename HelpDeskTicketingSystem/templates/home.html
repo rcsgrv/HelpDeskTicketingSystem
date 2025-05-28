@@ -24,13 +24,14 @@
   {% if tickets.items %}
     <div class="list-group">
       {% for ticket in tickets.items %}
-        <div class="ticket-card ticket-card--list">
-          <div class="ticket-content">
-            <h2>{{ ticket.subject }}</h2>
-            <p>Status: {{ ticket.status }}</p>
+        <div class="entity-card entity-card--list">
+          <div class="entity-content">
+            <h2>#{{ ticket.id }}: {{ ticket.subject }}</h2>
+            <p>Status: {{ ticket.priority }}</p>
             <p>Priority: {{ ticket.priority }}</p>
+            <p>Estimated Time: {{ ticket.estimated_time }}</p>
           </div>
-          <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View</a>
+          <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View Details</a>
         </div>
       {% endfor %}
     </div>

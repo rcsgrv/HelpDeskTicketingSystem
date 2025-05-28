@@ -43,34 +43,33 @@ p {
   padding: 0;
   margin-bottom: 24px;
 }
-
-.nav-container {
+.navbar .nav-container {
   display: flex;
-  justify-content: space-between;
-  align-items: right;
-  max-width: 1200px;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: auto;
   margin: 0 auto;
   padding: 0 16px;
 }
-
-.navbar-brand {
+.navbar .navbar-brand {
   color: #fff;
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
   padding: 14px 16px;
 }
-
-.navbar-links {
+.navbar .navbar-links {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
+  margin-left: auto;
 }
-.navbar-links li {
+.navbar .navbar-links li {
   margin-left: 16px;
 }
-.navbar-links a {
+.navbar .navbar-links a {
   display: block;
   padding: 14px 16px;
   color: #fff;
@@ -79,7 +78,7 @@ p {
   border-radius: 4px;
   transition: background-color 0.2s;
 }
-.navbar-links a:hover {
+.navbar .navbar-links a:hover {
   background-color: #0056b3;
 }
 
@@ -259,7 +258,7 @@ p {
   border-color: #007bff;
 }
 
-.ticket-card {
+.entity-card {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -267,20 +266,20 @@ p {
   padding: 16px;
   margin-bottom: 16px;
 }
-.ticket-card h2 {
+.entity-card h2 {
   margin-top: 0;
   font-size: 1.25rem;
   color: #333;
 }
-.ticket-card p {
+.entity-card p {
   margin: 0 0 8px;
   color: #555;
 }
-.ticket-card .btn-primary {
+.entity-card .btn-primary {
   margin-top: 8px;
 }
 
-.ticket-card--list {
+.entity-card--list {
   position: relative;
   max-width: 800px;
   margin-left: auto;
@@ -288,7 +287,7 @@ p {
   text-align: left;
   padding-bottom: 50px;
 }
-.ticket-card--list .btn-primary {
+.entity-card--list .btn-primary {
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -302,35 +301,35 @@ p {
   color: white;
   cursor: pointer;
 }
-.ticket-card--list .btn-primary:hover, .ticket-card--list .btn-primary:focus {
+.entity-card--list .btn-primary:hover, .entity-card--list .btn-primary:focus {
   background: #0062cc;
 }
-.ticket-card--list .ticket-title {
+.entity-card--list .entity-title {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
-.ticket-card--list .ticket-subtitle {
+.entity-card--list .entity-subtitle {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.ticket-card--details {
+.entity-card--details {
   background-color: #f9f9f9;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
 }
-.ticket-card--details .ticket-title {
+.entity-card--details .entity-title {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
-.ticket-card--details p {
+.entity-card--details p {
   margin-bottom: 0.75rem;
   font-size: 1rem;
   color: #333;
 }
-.ticket-card--details p strong {
+.entity-card--details p strong {
   color: #222;
 }
 

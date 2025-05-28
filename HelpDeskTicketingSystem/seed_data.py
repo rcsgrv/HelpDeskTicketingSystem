@@ -16,7 +16,7 @@ def populate_dummy_data():
             surname='Test',
             email=f'user{i}@example.com',
             password=generate_password_hash(f'password{i}'),
-            account_type='admin' if i == 1 else 'user'
+            account_type='admin' if i == 1 else 'regular'
         )
         users.append(user)
 

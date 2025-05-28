@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+  <div class="ticket-card ticket-card--details">
+    <h2 class="ticket-title">Profile</h2>
+    <p>Forename: {{ user.forename }}</p>
+    <p>Surname: {{ user.surname }}</p>
+    <p>Email Address: {{ user.email }}</p>
+    {% if current_user.account_type == 'admin' %}
+      <p>Account Type: {{ user.account_type }}</p>
+    {% endif %}
+  </div>
+ 
+<div class="btn-group">
+  <a href="{{ url_for('home.home') }}" class="btn btn-secondary">Back</a>
+
+  <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-primary">Edit</a>
+</div>
+{% endblock %}
