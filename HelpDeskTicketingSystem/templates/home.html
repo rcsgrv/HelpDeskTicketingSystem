@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block title %} Dashboard {% endblock %}
-
 {% block content %}
-  <h1 class="page-title">Welcome, {{ user.forename }}</h1>
+  <h2>Welcome, {{ user.forename }}</h2>
 
   <div class="create-ticket-wrapper">
     <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-primary btn-new-ticket">Create New Ticket</a>
@@ -25,12 +24,10 @@
     <div class="list-group">
       {% for ticket in tickets.items %}
         <div class="entity-card entity-card--list">
-          <div class="entity-content">
-            <h2>#{{ ticket.id }}: {{ ticket.subject }}</h2>
-            <p>Status: {{ ticket.priority }}</p>
-            <p>Priority: {{ ticket.priority }}</p>
-            <p>Estimated Time: {{ ticket.estimated_time }}</p>
-          </div>
+          <h3>#{{ ticket.id }}: {{ ticket.subject }}</h3>
+          <p>Status: {{ ticket.priority }}</p>
+          <p>Priority: {{ ticket.priority }}</p>
+          <p>Estimated Time: {{ ticket.estimated_time }}</p>
           <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View Details</a>
         </div>
       {% endfor %}

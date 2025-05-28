@@ -83,7 +83,7 @@ def ticket_details(ticket_id):
         flash('Ticket not found.', category='error')
         return redirect(url_for('home.home'))
     
-    if ticket.user_id != current_user.id and current_user.account_type != 'admin':
+    if ticket.user_id != current_user.id and current_user.account_type != 'Administrator':
         flash('You do not have permission to view this ticket.', category='error')
         return redirect(url_for('home.home'))
 
@@ -98,16 +98,21 @@ def edit_ticket(ticket_id):
         flash('Ticket not found.', category='error')
         return redirect(url_for('home.home'))
     
-    if ticket.user_id != current_user.id and current_user.account_type != 'admin':
+    if ticket.user_id != current_user.id and current_user.account_type != 'Administrator':
         flash('You do not have permission to edit this ticket.', category='error')
         return redirect(url_for('home.home'))
 
     if request.method == 'POST':
         subject = request.form.get('subject')
         description = request.form.get('description')
-        status = request.form.get('status')
-        priority = request.form.get('priority')
         estimated_time = request.form.get('estimated_time')
+
+        if current_user.account_type != 'Administrator':
+            status = 'Open'
+            priority = 'Normal'
+        else:
+            status = request.form.get('status')
+            priority = request.form.get('priority')
 
         if not subject or len(subject) < 1:
             flash('Subject cannot be blank.', category='error')
@@ -158,7 +163,7 @@ def delete_ticket(ticket_id):
         flash('Ticket not found.', category='error')
         return redirect(url_for('home.home'))
 
-    if current_user.account_type != 'admin':
+    if current_user.account_type != 'Administrator':
         flash('You do not have permission to delete this ticket.', category='error')
         return redirect(url_for('tickets.ticket_details', ticket_id=ticket.id))
 

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %} Edit Ticket {% endblock %}
 {% block content %}
+  <h2>Edit Ticket</h2>
   <form method="POST" class="form">
-    <h3>Edit Ticket</h3>
 
     <label for="subject">Subject</label>
     <input type="text" id="subject" name="subject" value="{{ ticket.subject }}" required />
@@ -10,25 +10,49 @@
     <label for="description">Description</label>
     <textarea id="description" name="description" required>{{ ticket.description }}</textarea>
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-      <option value="Open" {% if ticket.status == 'Open' %}selected{% endif %}>Open</option>
-      <option value="In Progress" {% if ticket.status == 'In Progress' %}selected{% endif %}>In Progress</option>
-      <option value="Closed" {% if ticket.status == 'Closed' %}selected{% endif %}>Closed</option>
-    </select>
+    {% if current_user.account_type == 'Administrator' %}
+      <label for="status">Status:</label>
+        <select id="status" name="status" required>
+          <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
+          <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
+          <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
+        </select>
 
-    <label for="priority">Priority</label>
-    <select id="priority" name="priority" required>
-      <option value="Low" {% if ticket.priority == 'Low' %}selected{% endif %}>Low</option>
-      <option value="Medium" {% if ticket.priority == 'Medium' %}selected{% endif %}>Medium</option>
-      <option value="High" {% if ticket.priority == 'High' %}selected{% endif %}>High</option>
-    </select>
+      <label for="priority">Priority:</label>
+        <select id="priority" name="priority" required>
+          <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
+          <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
+          <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
+        </select>
 
-    <label for="estimated_time">Estimated Time (in hours):</label>
-      <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5" min="1" required>
+    {% else %}
+      <label for="status">Status:</label>
+        <select id="status" disabled>
+          <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
+          <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
+          <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
+        </select>
+        <input type="hidden" name="status" value="{{ status }}">
+
+      <label for="priority">Priority:</label>
+        <select id="priority" disabled>
+          <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
+          <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
+          <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
+        </select>
+        <input type="hidden" name="priority" value="{{ priority }}">
+      {% endif %}
+    
+    {% if current_user.account_type == 'admin' %}
+      <label for="estimated_time">Estimated Time (in hours):</label>
+        <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5" min="1" required>
+    {% else %}
+      <label for="estimated_time">Estimated Time (in hours):</label>
+        <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5" min="1" required readonly>
+    {% endif %}
 
     <div class="btn-group">
-      <a href="{{ url_for('home.home') }}" class="btn btn-secondary">Cancel</a>
+      <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-secondary">Cancel</a>
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
 

@@ -5,7 +5,7 @@ from .models import User, Ticket
 
 def populate_dummy_data():
     if User.query.first():
-        print("Dummy data already exists.")
+        print("Seed data already exists.")
         return
 
     # 10 users
@@ -16,7 +16,7 @@ def populate_dummy_data():
             surname='Test',
             email=f'user{i}@example.com',
             password=generate_password_hash(f'password{i}'),
-            account_type='admin' if i == 1 else 'regular'
+            account_type='Administrator' if i == 1 else 'Regular User'
         )
         users.append(user)
 

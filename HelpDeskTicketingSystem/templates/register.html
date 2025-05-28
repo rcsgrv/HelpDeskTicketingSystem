@@ -1,34 +1,37 @@
-{% extends "base.html" %}
-{% block title %} Register {% endblock %}
-{% block content %}
-  <form method="POST" class="form">
-    <h3>Register</h3>
+{% extends "base.html" %} {% block title %} Register {% endblock %} {% block
+content %}
+<h2>Register</h2>
 
-    <label for="forename">Forename</label>
-    <input type="text" id="forename" name="forename" required />
+<form method="POST" class="form">
+  <label for="forename">Forename</label>
+  <input type="text" id="forename" name="forename" required />
 
-    <label for="surname">Surname</label>
-    <input type="text" id="surname" name="surname" required />
+  <label for="surname">Surname</label>
+  <input type="text" id="surname" name="surname" required />
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" required />
+  <label for="email">Email Address</label>
+  <input type="email" id="email" name="email" required />
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required />
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required />
 
-    <label for="password_confirm">Confirm Password</label>
-    <input type="password" id="password_confirm" name="password_confirm" required />
+  <label for="password_confirm">Confirm Password</label>
+  <input
+    type="password"
+    id="password_confirm"
+    name="password_confirm"
+    required
+  />
 
-    <label for="account_type">Account Type</label>
-    <select id="account_type" name="account_type" required>
-      <option value="" disabled selected>Select an Account Type</option>
-      <option value="regular">Regular User</option>
-      <option value="admin">Administrator</option>
-    </select>
+  <label for="account_type">Account Type</label>
+  <select id="account_type" name="account_type" required>
+    <option value="" disabled selected>Select an Account Type</option>
+    <option value="Regular User">Regular User</option>
+    <option value="Administrator">Administrator</option>
+  </select>
 
-    <div class="btn-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    
-  </form>
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
 {% endblock %}

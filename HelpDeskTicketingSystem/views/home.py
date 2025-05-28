@@ -10,7 +10,7 @@ def home():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
 
-    if current_user.account_type == 'admin':
+    if current_user.account_type == 'Administrator':
         tickets = Ticket.query.order_by(Ticket.id.desc()).paginate(page=page, per_page=per_page)
     else:
         tickets = Ticket.query.filter_by(user_id=current_user.id).order_by(Ticket.id.desc()).paginate(page=page, per_page=per_page)
