@@ -11,7 +11,7 @@
   <ul class="navbar-links">
     {% if current_user.is_authenticated %}
       <li><a href="{{ url_for('home.home') }}">Home</a></li>
-      <li><a href="{{ url_for('auth.profile') }}">Profile</a></li>
+      <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
       <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
     {% else %}
       <li><a href="{{ url_for('auth.login') }}">Login</a></li>

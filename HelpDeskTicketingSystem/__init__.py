@@ -19,11 +19,13 @@ def create_app():
     # Register Blueprints
     from .views.home import home_bp
     from .views.auth import auth_bp
+    from .views.users import users_bp
     from .views.tickets import tickets_bp
 
     app.register_blueprint(home_bp, url_prefix='/')
     app.register_blueprint(auth_bp, url_prefix='/')
-    app.register_blueprint(tickets_bp, url_prefix='/tickets')
+    app.register_blueprint(tickets_bp, url_prefix='/')
+    app.register_blueprint(users_bp, url_prefix='/')
 
     create_database(app)
 
