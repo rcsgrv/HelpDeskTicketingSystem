@@ -4,19 +4,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: v.$font-family-base;
-  font-size: 16px;
+  font-size: v.$font-size-base;
   line-height: 1.5;
   color: #222;
   background-color: #fafafa;
-
-  .page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #222;
-    margin: 24px 0;
-    text-align: center;
-    font-family: v.$font-family-base;
-  }
 }
 
 h2 {
@@ -132,7 +123,7 @@ p {
   border-radius: 6px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 0 auto;
+  margin: auto;
 
   h3 {
     text-align: center;
@@ -148,9 +139,11 @@ p {
   input,
   select,
   textarea {
-    width: 100%;
+    flex: 1;
+    display: flex;
     padding: 8px;
     margin-bottom: 16px;
+    font-family: v.$font-family-base;
     font-size: 16px;
     color: #222;
     background: #fff;
@@ -162,6 +155,15 @@ p {
       border-color: #007bff;
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
+  }
+
+  input,
+  textarea {
+    width: 580px;
+  }
+
+  select {
+    width: 600px;
   }
 
   textarea {
@@ -350,24 +352,28 @@ p {
 
 .btn-group {
   max-width: 600px;
+  align-content: end;
   margin: 0 auto 24px;
   display: flex;
   gap: 10px;
 
+  .btn,
   a.btn,
-  form button.btn {
+  button.btn {
     flex: 1;
-  }
-
-  .btn {
+    display: flex;      
+    align-items: center;         
+    justify-content: center;     
+    text-align: center;
     width: 100%;
-    padding: 12px; 
+    padding: 12px;
     font-size: 14px;
     font-weight: 700;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    text-align: center;
+    text-decoration: none;
+  }
 
     &.btn-primary {
       background-color: #007bff;
@@ -396,4 +402,3 @@ p {
       }
     }
   }
-}

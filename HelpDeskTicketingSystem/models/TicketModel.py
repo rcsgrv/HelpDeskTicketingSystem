@@ -11,5 +11,6 @@ class Ticket(db.Model):
     priority = db.Column(db.String(20), nullable=False)
     estimated_time = db.Column(db.Float, nullable=False)
     date_created = db.Column(db.DateTime(timezone=True), default=func.current_timestamp())
+    date_updated = db.Column(db.DateTime(timezone=True), default=func.current_timestamp(), onupdate=func.current_timestamp())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = relationship('User', backref='tickets')

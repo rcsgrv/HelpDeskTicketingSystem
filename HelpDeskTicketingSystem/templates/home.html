@@ -28,6 +28,10 @@
           <p>Status: {{ ticket.priority }}</p>
           <p>Priority: {{ ticket.priority }}</p>
           <p>Estimated Time: {{ ticket.estimated_time }}</p>
+          <p>Date Created: {{ ticket.date_created.strftime('%d-%m-%Y %H:%M:%S') }}</p>
+          {% if current_user.account_type == 'Administrator' %}
+            <p>Created By: {{ ticket.user.forename }} {{ ticket.user.surname }}</p>
+          {% endif %}
           <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View Details</a>
         </div>
       {% endfor %}

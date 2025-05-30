@@ -43,14 +43,14 @@ def register():
 
         user = User.query.filter_by(email=email).first()
 
-        if user is not None:
-            flash('The email you have provided is already associated with an account.', category='error')
-        elif not email or len(email) < 1:
-            flash('Email cannot be blank.', category='error')
-        elif not forename or len(forename) < 1:
+        if not forename or len(forename) < 1:
             flash('Forename cannot be blank.', category='error')
         elif not surname or len(surname) < 1:
             flash('Surname cannot be blank.', category='error')
+        elif user is not None:
+            flash('The email you have provided is already associated with an account.', category='error')
+        elif not email or len(email) < 1:
+            flash('Email cannot be blank.', category='error')
         elif password != password_confirm:
             flash('Your passwords do not match.', category='error')
         elif not password or len(password) < 8:
@@ -58,9 +58,9 @@ def register():
         elif account_type == 'Administrator':
 
             session['pending_user'] = {
-                'email': email,
                 'forename': forename,
                 'surname': surname,
+                'email': email,
                 'password': password,
                 'account_type': account_type
             }
@@ -96,9 +96,9 @@ def admin_code():
 
         if submitted_code == correct_code:
             new_user = User(
-                email=pending_user['email'],
                 forename=pending_user['forename'],
                 surname=pending_user['surname'],
+                email=pending_user['email'],
                 password=generate_password_hash(pending_user['password'], method='pbkdf2:sha256'),
                 account_type=pending_user['account_type']
             )
@@ -109,6 +109,6 @@ def admin_code():
             flash('Administrator account successfully created.', category='success')
             return redirect(url_for('home.home'))
         else:
-            flash('Incorrect admin verification code.', category='error')
+            flash('Incorrect verification code. Please try again.', category='error')
 
     return render_template('admin_code.html')

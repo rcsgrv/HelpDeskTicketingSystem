@@ -1,9 +1,9 @@
 from werkzeug.security import generate_password_hash
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 from .extensions import db
 from .models import User, Ticket
 
-def populate_dummy_data():
+def populate_seed_data():
     if User.query.first():
         print("Seed data already exists.")
         return
@@ -52,8 +52,6 @@ def populate_dummy_data():
     priorities = ['Low', 'Medium', 'High']
     estimated_times = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
 
-    base_time = datetime.now()
-
     tickets = []
     for i in range(10):
         ticket = Ticket(
@@ -62,7 +60,7 @@ def populate_dummy_data():
             status=statuses[i % len(statuses)],
             priority=priorities[i % len(priorities)],
             estimated_time=estimated_times[i],
-            date_created=base_time - timedelta(days=i),
+            date_created=datetime.now(timezone.utc),
             user_id=users[i % len(users)].id
         )
         tickets.append(ticket)

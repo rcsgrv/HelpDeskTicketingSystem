@@ -3,7 +3,7 @@ from config import Config
 from .extensions import db, login_manager
 import os
 from os import path
-from HelpDeskTicketingSystem.seed_data import populate_dummy_data
+from HelpDeskTicketingSystem.seed_data import populate_seed_data
 
 DB_NAME = "helpdeskticketingsystem.db"
 
@@ -43,5 +43,5 @@ def create_database(app):
         os.makedirs(app.instance_path, exist_ok=True)
         with app.app_context():
             db.create_all()
-            populate_dummy_data()
+            populate_seed_data()
         print('Database Created.')
