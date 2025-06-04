@@ -1,12 +1,12 @@
 def validate_ticket_form(subject, description, priority, status, estimated_time):
     if not subject or len(subject.strip()) < 1:
         return 'Subject cannot be blank.'
-    if len(subject) > 50:
-        return 'Subject must not exceed 50 characters.'
+    if len(subject) > 100:
+        return 'Subject must not exceed 100 characters.'
     if not description or len(description.strip()) < 1:
         return 'Description cannot be blank.'
-    if len(description) > 250:
-        return 'Description must not exceed 250 characters.'
+    if len(description) > 500:
+        return 'Description must not exceed 500 characters.'
     if not priority:
         return 'You must select a priority.'
     if not status:
