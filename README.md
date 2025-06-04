@@ -68,8 +68,8 @@ Alternatively, the application is currently hosted on Render and can be accessed
 
 When the application is ran for the first time, seed data will be generated. This seed data consists of 10 users and 10 tickets. The users email addresses and passwords will be in the following format:
 
-Email Address: user1@example.com
-Password: password1
+- Email Address: user1@example.com
+- Password: password1
 
 
 ## Administrator Registration
@@ -77,43 +77,3 @@ Password: password1
 To improve security, a 2-step process has been implemented for users wanting to register as Administrators. Upon selecting the Administrator account type on the Registration page, users will be prompted to input an administrator verification code. 
 
 This code has been hardcoded but serves as a proof of concept for this assignment. The code is currently: 53c17e4d8efdafeddd375e53e4689cc757f1f322ef4595caedc3e85e2fb79c4e
-
-## Project Structure
-
-┣ 📂HelpDeskTicketingSystem
-┃ ┣ 📂models
-┃ ┃ ┣ 📜__init__.py
-┃ ┃ ┣ 📜TicketModel.py
-┃ ┃ ┗ 📜UserModel.py
-┃ ┣ 📂static
-┃ ┃ ┣ 📜_variables.scss
-┃ ┃ ┣ 📜main.css
-┃ ┃ ┣ 📜main.css.map
-┃ ┃ ┗ 📜main.scss
-┃ ┣ 📂templates
-┃ ┃ ┣ 📜admin_code.html
-┃ ┃ ┣ 📜base.html
-┃ ┃ ┣ 📜create_ticket.html
-┃ ┃ ┣ 📜edit_ticket.html
-┃ ┃ ┣ 📜home.html
-┃ ┃ ┣ 📜login.html
-┃ ┃ ┣ 📜profile.html
-┃ ┃ ┣ 📜register.html
-┃ ┃ ┗ 📜ticket_details.html
-┃ ┣ 📂utils
-┃ ┃ ┣ 📜registration_helper.py
-┃ ┃ ┗ 📜ticket_helper.py
-┃ ┣ 📂views
-┃ ┃ ┣ 📜auth.py
-┃ ┃ ┣ 📜home.py
-┃ ┃ ┣ 📜tickets.py
-┃ ┃ ┗ 📜users.py
-┃ ┣ 📜__init__.py
-┃ ┣ 📜extensions.py
-┃ ┗ 📜seed_data.py
-┣ 📂instance
-┃ ┗ 📜helpdeskticketingsystem.db
-┣ 📜config.py
-┣ 📜main.py
-┣ 📜README.md
-┗ 📜requirements.txt
