@@ -64,6 +64,14 @@ This will launch the app at http://127.0.0.1:5000/.
 
 Alternatively, the application is currently hosted on Render and can be accessed via the following URL: https://help-desk-ticketing-system-eucm.onrender.com
 
+## Seed Data
+
+When the application is ran for the first time, seed data will be generated. This seed data consists of 10 users and 10 tickets. The users email addresses and passwords will be in the following format:
+
+Email Address: user1@example.com
+Password: password1
+
+
 ## Administrator Registration
 
 To improve security, a 2-step process has been implemented for users wanting to register as Administrators. Upon selecting the Administrator account type on the Registration page, users will be prompted to input an administrator verification code. 
@@ -74,6 +82,7 @@ This code has been hardcoded but serves as a proof of concept for this assignmen
 
 ┣ 📂HelpDeskTicketingSystem
 ┃ ┣ 📂models
+┃ ┃ ┣ 📜__init__.py
 ┃ ┃ ┣ 📜TicketModel.py
 ┃ ┃ ┗ 📜UserModel.py
 ┃ ┣ 📂static
@@ -92,6 +101,7 @@ This code has been hardcoded but serves as a proof of concept for this assignmen
 ┃ ┃ ┣ 📜register.html
 ┃ ┃ ┗ 📜ticket_details.html
 ┃ ┣ 📂utils
+┃ ┃ ┣ 📜registration_helper.py
 ┃ ┃ ┗ 📜ticket_helper.py
 ┃ ┣ 📂views
 ┃ ┃ ┣ 📜auth.py

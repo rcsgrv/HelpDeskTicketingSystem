@@ -25,6 +25,10 @@
           <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
       </select>
 
+      <label for="estimated_time">Estimated Time (in hours):</label>
+      <input type="number" id="estimated_time" name="estimated_time" step="0.5" 
+        value="{{ estimated_time | default('') }}" />
+
     {% else %}
       <label for="status">Status:</label>
         <select id="status" disabled>
@@ -37,12 +41,12 @@
           <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
         </select>
         <input type="hidden" name="priority" value="{{ priority }}">
+
+      <label for="estimated_time">Estimated Time (in hours):</label>
+        <input type="number" id="estimated_time" name="estimated_time" step="0.5" 
+           value="{{ estimated_time | default(4) }}" readonly/>
     {% endif %}
 
-
-    <label for="estimated_time">Estimated Time (in hours):</label>
-    <input type="number" id="estimated_time" name="estimated_time" step="0.5" 
-           value="{{ estimated_time | default('') }}" />
 
 </form>
 <br>

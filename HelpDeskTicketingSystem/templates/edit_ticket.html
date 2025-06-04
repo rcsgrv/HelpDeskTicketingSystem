@@ -28,15 +28,15 @@
     {% else %}
       <label for="status">Status:</label>
       <select id="status" disabled>
-        <option value="{{ status }}" selected>{{ status }}</option>
+        <option value="{{ status }}" selected>{{ ticket.status }}</option>
       </select>
-      <input type="hidden" name="status" value="{{ status }}">
+      <input type="hidden" name="status" value="{{ ticket.status }}">
 
       <label for="priority">Priority:</label>
       <select id="priority" disabled>
-        <option value="{{ priority }}" selected>{{ priority }}</option>
+        <option value="{{ priority }}" selected>{{ ticket.priority }}</option>
       </select>
-      <input type="hidden" name="priority" value="{{ priority }}">
+      <input type="hidden" name="priority" value="{{ ticket.priority }}">
     {% endif %}
 
     <label for="estimated_time">Estimated Time (in hours):</label>
