@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from ..models import User
+from HelpDeskTicketingSystem.utils.registration_helper import validate_registration_form
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db, login_manager
 
@@ -12,16 +13,23 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        user = User.query.filter_by(email=email).first()
-
-        if user and check_password_hash(user.password, password):
-            flash('Logged in successfully.', category='success')
-            login_user(user, remember=True)
-            return redirect(url_for('home.home'))
+        if not email:
+            flash('Please enter your email address.', category='error')
+        elif '@' not in email or '.' not in email.split('@')[-1]:
+            flash('Please enter a valid email address.', category='error')
+        elif not password:
+            flash('Please enter your password.', category='error')
         else:
-            flash('Incorrect username or password. Please try again.', category='error')
+            user = User.query.filter_by(email=email).first()
+
+            if user and check_password_hash(user.password, password):
+                flash('Logged in successfully.', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('home.home'))
+            else:
+                flash('Incorrect username or password. Please try again.', category='error')
     
-    return render_template("login.html", user=current_user)
+    return render_template("login.html", user=current_user, email='')
 
 @auth_bp.route('/logout')
 @login_required
@@ -43,20 +51,19 @@ def register():
 
         user = User.query.filter_by(email=email).first()
 
-        if not forename or len(forename) < 1:
-            flash('Forename cannot be blank.', category='error')
-        elif not surname or len(surname) < 1:
-            flash('Surname cannot be blank.', category='error')
-        elif user is not None:
-            flash('The email you have provided is already associated with an account.', category='error')
-        elif not email or len(email) < 1:
-            flash('Email cannot be blank.', category='error')
-        elif password != password_confirm:
-            flash('Your passwords do not match.', category='error')
-        elif not password or len(password) < 8:
-            flash('Password must be at least 8 characters long.', category='error')
-        elif account_type == 'Administrator':
+        error = validate_registration_form(forename, surname, email, password, password_confirm, account_type, user)
+        if error:
+            flash(error, category='error')
+            return render_template(
+                "register.html",
+                user=current_user,
+                forename=forename,
+                surname=surname,
+                email=email,
+                account_type=account_type
+            )
 
+        if account_type == 'Administrator':
             session['pending_user'] = {
                 'forename': forename,
                 'surname': surname,
@@ -65,20 +72,19 @@ def register():
                 'account_type': account_type
             }
             return redirect(url_for('auth.admin_code'))
-        else:
 
-            new_user = User(
-                email=email,
-                forename=forename,
-                surname=surname,
-                password=generate_password_hash(password, method='pbkdf2:sha256'),
-                account_type=account_type
-            )
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user, remember=True)
-            flash('Account successfully created.', category='success')
-            return redirect(url_for('home.home'))
+        new_user = User(
+            email=email,
+            forename=forename,
+            surname=surname,
+            password=generate_password_hash(password, method='pbkdf2:sha256'),
+            account_type=account_type
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user, remember=True)
+        flash('Account successfully created.', category='success')
+        return redirect(url_for('home.home'))
 
     return render_template("register.html", user=current_user)
 

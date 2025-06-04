@@ -4,13 +4,13 @@ content %}
 
 <form method="POST" class="form">
   <label for="forename">Forename:</label>
-  <input type="text" id="forename" name="forename" />
+  <input type="text" id="forename" name="forename" value="{{ forename | default('') }}" />
 
   <label for="surname">Surname:</label>
-  <input type="text" id="surname" name="surname" />
+  <input type="text" id="surname" name="surname" value="{{ surname | default('') }}"/>
 
   <label for="email">Email Address:</label>
-  <input type="email" id="email" name="email" />
+  <input type="text" id="email" name="email" value="{{ email | default('') }}"/>
 
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" />
@@ -21,8 +21,8 @@ content %}
   <label for="account_type">Account Type:</label>
   <select id="account_type" name="account_type">
     <option value="" disabled selected>Select an Account Type</option>
-    <option value="Regular User">Regular User</option>
-    <option value="Administrator">Administrator</option>
+    <option value="Regular User" {% if account_type == 'Regular User' %}selected{% endif %}>Regular User</option>
+    <option value="Administrator"{% if account_type == 'Administrator' %}selected{% endif %}>Administrator</option>
   </select>
 
   <div class="btn-group">

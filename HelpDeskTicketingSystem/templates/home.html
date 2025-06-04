@@ -25,12 +25,13 @@
       {% for ticket in tickets.items %}
         <div class="entity-card entity-card--list">
           <h3>#{{ ticket.id }}: {{ ticket.subject }}</h3>
-          <p>Status: {{ ticket.priority }}</p>
-          <p>Priority: {{ ticket.priority }}</p>
-          <p>Estimated Time: {{ ticket.estimated_time }}</p>
-          <p>Date Created: {{ ticket.date_created.strftime('%d-%m-%Y %H:%M:%S') }}</p>
+          <p><strong>Description:</strong> {{ ticket.description }}</p>
+          <p><strong>Status:</strong> {{ ticket.priority }}</p>
+          <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+          <p><strong>Estimated Time:</strong> {{ ticket.estimated_time }}</p>
+          <p><strong>Date Created:</strong> {{ ticket.date_created.strftime('%d-%m-%Y %H:%M:%S') }}</p>
           {% if current_user.account_type == 'Administrator' %}
-            <p>Created By: {{ ticket.user.forename }} {{ ticket.user.surname }}</p>
+            <p><strong>Created By:</strong> {{ ticket.user.forename }} {{ ticket.user.surname }}</p>
           {% endif %}
           <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-primary">View Details</a>
         </div>

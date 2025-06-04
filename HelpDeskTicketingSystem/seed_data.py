@@ -25,28 +25,28 @@ def populate_seed_data():
 
     # 10 tickets
     subjects = [
-        'Login form is not functioning correctly',
-        'Page crashes on submit',
-        'Feature request: Dark Mode',
-        'Bug in search filter',
-        'Slow dashboard loading',
-        'Error 500 on profile update',
-        'Unable to reset password',
-        'Missing tooltip on button',
-        'Dropdown not responsive',
-        'Checkbox selection issue'
+        'Candidate - Schedule - Performance',
+        'Maintenance - Financials - Back Office Export Templates',
+        'Maintenance - System - Job Scheduler - Mailbox Scanner',
+        'Maintenance - Templates - Documents / Email / SMS',
+        'Vacancy - Vacancy Record - Shortlist',
+        'Timesheet - Timesheet Adjustments - Adjust Hours',
+        'Vacancy - Vacancy Record - Shortlist - Requirement Modification Events',
+        'Placement - Schedule - Delete Booking & Requirements',
+        'Client - Client Contacts',
+        'Searching - Main Entity Search Screens'
     ]
     descriptions = [
-        'This is a dummy ticket for testing.',
-        'Steps to reproduce: open page, click button.',
-        'Expected vs actual results differ.',
-        'New ticket for development testing.',
-        'This appears only on mobile.',
-        'Firefox shows different behaviour.',
-        'Investigate logs for error stack trace.',
-        'Maybe a caching issue?',
-        'Seen after last deployment.',
-        'Only affects users with long names.'
+        'When a candidate has a large number of placements (>200) the schedule tab takes 20-30 seconds to load.',
+        'Two fields overlap on the Back Office Export Templates form when creating a candidate export template.',
+        'The System Mailbox form needs to be renamed to Mailbox Scanner Ruleset.',
+        'Merging an email hides all attachments that were added to the email.',
+        'Users are able to add multiple instances of the same shortlist record without any validation errors occurring.',
+        'Adjustment timesheets error when you set them to Rejected.',
+        'Requirements Added logs are getting raised when adding bookings to placement records.',
+        'Eclipse encounters an error when attempting to delete bookings on a placement record.',
+        'Client Contact Record Opened logs do not link to the client record.',
+        'Users are unable to login to Eclipse if a live list exists that contains a search option that uses a stored proc.'
     ]
     statuses = ['Open', 'In Progress', 'Closed']
     priorities = ['Low', 'Medium', 'High']

@@ -2,13 +2,15 @@
 content %}
 <h2>Profile</h2>
 <div class="form">
-  <p>Forename: {{ user.forename }}</p>
-  <p>Surname: {{ user.surname }}</p>
-  <p>Email Address: {{ user.email }}</p>
-  <p>Account Type: {{ user.account_type }}</p>
+  <p><strong>Forename:</strong> {{ user.forename }}</p>
+  <p><strong>Surname:</strong> {{ user.surname }}</p>
+  <p><strong>Email Address:</strong> {{ user.email }}</p>
+  <p><strong>Account Type:</strong> {{ user.account_type }}</p>
 </div>
 <br />
 <div class="btn-group">
-  <a href="{{ url_for('home.home') }}" class="btn btn-group btn-secondary">Back</a>
+  <a href="{{ url_for('home.home') }}" class="btn btn-group btn-secondary"
+    >Back</a
+  >
 </div>
 {% endblock %}

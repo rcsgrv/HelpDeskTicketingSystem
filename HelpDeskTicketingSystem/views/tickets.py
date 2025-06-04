@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from HelpDeskTicketingSystem.models.TicketModel import Ticket
+from HelpDeskTicketingSystem.utils.ticket_helper import validate_ticket_form, render_ticket_form
 from ..extensions import db
 
 tickets_bp = Blueprint('tickets', __name__)
@@ -15,56 +16,25 @@ def create_ticket():
         priority = request.form.get('priority')
         estimated_time = request.form.get('estimated_time')
 
-        if not subject or len(subject) < 1:
-            flash('Subject cannot be blank.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-        if len(subject) > 50:
-            flash('Subject must not exceed 50 characters.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-        if not description or len(description) < 1:
-            flash('Description cannot be blank.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-        if len(description) > 250:
-            flash('Description must not exceed 250 characters.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-        if not priority:
-            flash('You must select a priority.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-        if not status:
-            flash('You must select a status.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
-
-        try:
-            estimated_time_val = float(estimated_time)
-            if estimated_time_val < 1:
-                flash('Estimated time cannot be less than 1 hour.', category='error')
-                return render_template('create_ticket.html', user=current_user,
-                                       subject=subject, description=description,
-                                       priority=priority, status=status, estimated_time=estimated_time)
-        except (ValueError, TypeError):
-            flash('Estimated time must be a number.', category='error')
-            return render_template('create_ticket.html', user=current_user,
-                                   subject=subject, description=description,
-                                   priority=priority, status=status, estimated_time=estimated_time)
+        error = validate_ticket_form(subject, description, priority, status, estimated_time)
+        if error:
+            return render_ticket_form(
+                'create_ticket.html',
+                error=error,
+                user=current_user,
+                subject=subject,
+                description=description,
+                priority=priority,
+                status=status,
+                estimated_time=estimated_time
+            )
 
         new_ticket = Ticket(
             subject=subject,
             description=description,
             priority=priority,
             status=status,
-            estimated_time=estimated_time_val,
+            estimated_time=float(estimated_time),
             user_id=current_user.id
         )
         db.session.add(new_ticket)
@@ -97,7 +67,7 @@ def edit_ticket(ticket_id):
     if not ticket:
         flash('Ticket not found.', category='error')
         return redirect(url_for('home.home'))
-    
+
     if ticket.user_id != current_user.id and current_user.account_type != 'Administrator':
         flash('You do not have permission to edit this ticket.', category='error')
         return redirect(url_for('home.home'))
@@ -108,51 +78,31 @@ def edit_ticket(ticket_id):
         estimated_time = request.form.get('estimated_time')
 
         if current_user.account_type != 'Administrator':
-            status = 'Open'
-            priority = 'Normal'
+            status = ticket.status 
+            priority = ticket.priority
         else:
             status = request.form.get('status')
             priority = request.form.get('priority')
 
-        if not subject or len(subject) < 1:
-            flash('Subject cannot be blank.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        if len(subject) > 50:
-            flash('Subject must not exceed 50 characters.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        if not description or len(description) < 1:
-            flash('Description cannot be blank.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        if len(description) > 250:
-            flash('Description must not exceed 250 characters.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        if not priority:
-            flash('You must select a priority.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        if not status:
-            flash('You must select a status.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
-        try:
-            estimated_time_val = float(estimated_time)
-            if estimated_time_val < 1:
-                flash('Estimated time cannot be less than 1 hour.', category='error')
-                return render_template('edit_ticket.html', ticket=ticket)
-        except (ValueError, TypeError):
-            flash('Estimated time must be a number.', category='error')
-            return render_template('edit_ticket.html', ticket=ticket)
+        error = validate_ticket_form(subject, description, priority, status, estimated_time)
+        if error:
+            return render_ticket_form(
+                'edit_ticket.html',
+                error=error,
+                ticket=ticket
+            )
 
         ticket.subject = subject
         ticket.description = description
         ticket.status = status
         ticket.priority = priority
-        ticket.estimated_time = estimated_time_val
+        ticket.estimated_time = float(estimated_time)
 
         db.session.commit()
         flash('Ticket updated successfully.', category='success')
         return redirect(url_for('tickets.ticket_details', ticket_id=ticket.id))
 
     return render_template('edit_ticket.html', ticket=ticket)
-
 
 @tickets_bp.route('/delete_ticket/<int:ticket_id>', methods=['POST'])
 @login_required

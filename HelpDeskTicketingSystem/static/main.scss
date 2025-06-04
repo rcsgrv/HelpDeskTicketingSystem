@@ -6,36 +6,35 @@ body {
   font-family: v.$font-family-base;
   font-size: v.$font-size-base;
   line-height: 1.5;
-  color: #222;
-  background-color: #fafafa;
+  color: v.$color-text-primary;
+  background-color: v.$color-bg-primary;
 }
 
 h2 {
-  background: #fff;
-  padding: 24px;
-  border-radius: 6px;
+  background: v.$color-bg-secondary;
+  padding: v.$spacing-lg;
+  border-radius: v.$border-radius;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 24px;
-  background-color: #007bff;
-  color: #fff;
+  margin-bottom: v.$spacing-lg;
+  background-color: v.$btn-color;
+  color: v.$color-bg-secondary;
 }
 
-
 a {
-  color: #007bff;
+  color: v.$btn-color;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: #0062cc;
+    color: v.$btn-color-hover;
   }
 }
 
 p {
-  color: #222;
+  color: v.$color-text-primary;
   text-decoration: none;
   font-weight: 300;
 }
@@ -43,30 +42,30 @@ p {
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: v.$spacing-lg v.$spacing-md;
 }
 
 .navbar {
   width: 100%;
-  background-color: #007bff;
+  background-color: v.$btn-color;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 0;
 
   .nav-container {
     display: flex;
     justify-content: flex-start;
-    align-items: center;            
+    align-items: center;
     max-width: auto;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 v.$spacing-md;
   }
 
   .navbar-brand {
-    color: #fff;
+    color: v.$color-bg-secondary;
     font-weight: 700;
     font-size: 1.25rem;
     text-decoration: none;
-    padding: 14px 16px;
+    padding: 14px v.$spacing-md;
   }
 
   .navbar-links {
@@ -78,56 +77,56 @@ p {
     margin-left: auto;
 
     li {
-      margin-left: 16px;
+      margin-left: v.$spacing-md;
     }
 
     a {
       display: block;
-      padding: 14px 16px;
-      color: #fff;
+      padding: 14px v.$spacing-md;
+      color: v.$color-bg-secondary;
       text-decoration: none;
       font-weight: 600;
       border-radius: 4px;
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: v.$btn-color-hover;
       }
     }
   }
 }
 
 .alert {
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 6px;
+  padding: v.$spacing-md;
+  margin-bottom: v.$spacing-md;
+  border-radius: v.$border-radius;
   font-weight: 600;
   text-align: center;
 
   &.alert-danger {
-    background: #f8d7da;
-    color: #842029;
+    background: v.$color-error-bg;
+    color: v.$color-error-text;
     border: 1px solid #f0acb2;
   }
 
   &.alert-success {
-    background: #d1e7dd;
-    color: #0f5132;
+    background: v.$color-success-bg;
+    color: v.$color-success-text;
     border: 1px solid #afd6c4;
   }
 }
 
 .form {
-  background: #fff;
-  padding: 24px;
-  border-radius: 6px;
+  background: v.$color-bg-secondary;
+  padding: v.$spacing-lg;
+  border-radius: v.$border-radius;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: auto;
 
   h3 {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: v.$spacing-lg;
   }
 
   label {
@@ -141,18 +140,18 @@ p {
   textarea {
     flex: 1;
     display: flex;
-    padding: 8px;
-    margin-bottom: 16px;
+    padding: v.$spacing-sm;
+    margin-bottom: v.$spacing-md;
     font-family: v.$font-family-base;
-    font-size: 16px;
-    color: #222;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    font-size: v.$font-size-base;
+    color: v.$color-text-primary;
+    background: v.$color-bg-secondary;
+    border: 1px solid v.$color-border;
+    border-radius: v.$border-radius;
 
     &:focus {
       outline: none;
-      border-color: #007bff;
+      border-color: v.$btn-color;
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
   }
@@ -174,25 +173,25 @@ p {
 
 .create-ticket-wrapper {
   text-align: center;
-  margin: 24px 0;
+  margin: v.$spacing-lg 0;
 }
 
 .btn-new-ticket {
   display: inline-block;
-  background-color: #007bff;
-  color: #fff;
+  background-color: v.$btn-color;
+  color: v.$color-bg-secondary;
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 6px;
+  border-radius: v.$border-radius;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:hover,
   &:focus {
-    background-color: #0056b3;
-    color: #fff;
+    background-color: v.$btn-color-hover;
+    color: v.$color-bg-secondary;
     text-decoration: none;
   }
 }
@@ -201,7 +200,7 @@ p {
   display: flex;
   justify-content: flex-end;
   max-width: 700px;
-  margin: 0 16px 0 100px;
+  margin: 0 v.$spacing-md 0 100px;
   padding: 0;
 }
 
@@ -209,7 +208,7 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  gap: v.$spacing-sm;
   font-weight: 600;
   margin: 0;
   margin-left: 32px;
@@ -231,16 +230,16 @@ p {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: v.$spacing-lg;
   font-weight: 600;
   color: #333;
   font-size: 1rem;
 
   a.btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 6px;
+    background-color: v.$btn-color;
+    color: v.$color-bg-secondary;
+    padding: v.$spacing-sm v.$spacing-md;
+    border-radius: v.$border-radius;
     border: none;
     font-weight: 700;
     text-decoration: none;
@@ -249,7 +248,7 @@ p {
 
     &:hover,
     &:focus {
-      background-color: #0056b3;
+      background-color: v.$btn-color-hover;
       outline: none;
     }
   }
@@ -263,12 +262,12 @@ p {
 }
 
 .entity-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: v.$color-bg-secondary;
+  border: 1px solid v.$color-border;
   border-radius: 8px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: v.$spacing-md;
+  margin-bottom: v.$spacing-md;
 
   .h3 {
     margin-top: 0;
@@ -277,8 +276,8 @@ p {
   }
 
   .p {
-    margin: 0 0 8px;
-    color: #555;
+    margin: 0 0 v.$spacing-sm;
+    color: v.$color-text-secondary;
   }
 }
 
@@ -292,21 +291,21 @@ p {
 
   .btn-primary {
     position: absolute;
-    bottom: 16px;
-    right: 16px;
+    bottom: v.$spacing-md;
+    right: v.$spacing-md;
     width: auto;
-    padding: 8px 16px;
+    padding: v.$spacing-sm v.$spacing-md;
     font-size: 14px;
     font-weight: 700;
     border: none;
-    border-radius: 6px;
-    background: #007bff;
-    color: white;
+    border-radius: v.$border-radius;
+    background: v.$btn-color;
+    color: v.$color-bg-secondary;
     cursor: pointer;
 
     &:hover,
     &:focus {
-      background: #0062cc;
+      background: v.$btn-color-hover;
     }
   }
 
@@ -345,7 +344,7 @@ p {
     color: #333;
 
     strong {
-      color: #222;
+      color: v.$color-text-primary;
     }
   }
 }
@@ -353,7 +352,7 @@ p {
 .btn-group {
   max-width: 600px;
   align-content: end;
-  margin: 0 auto 24px;
+  margin: 0 auto v.$spacing-lg;
   display: flex;
   gap: 10px;
 
@@ -361,44 +360,53 @@ p {
   a.btn,
   button.btn {
     flex: 1;
-    display: flex;      
-    align-items: center;         
-    justify-content: center;     
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     width: 100%;
     padding: 12px;
     font-size: 14px;
     font-weight: 700;
     border: none;
-    border-radius: 6px;
+    border-radius: v.$border-radius;
     cursor: pointer;
     text-decoration: none;
   }
 
-    &.btn-primary {
-      background-color: #007bff;
-      color: #fff;
+  &.btn-primary {
+    background-color: v.$btn-color;
+    color: v.$color-bg-secondary;
 
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-
-    &.btn-secondary {
-      background-color: #fff;
-      color: #007bff;
-
-      &:hover {
-        color: #0056b3;
-      }
-    }
-
-    &.btn-danger {
-      background-color: #dc3545;
-      color: #fff;
-
-      &:hover {
-        background-color: #a71d2a;
-      }
+    &:hover {
+      background-color: v.$btn-color-hover;
     }
   }
+
+  &.btn-secondary {
+    background-color: v.$color-bg-secondary;
+    color: v.$btn-color;
+
+    &:hover {
+      color: v.$btn-color-hover;
+    }
+  }
+
+  &.btn-danger {
+    background-color: v.$btn-color-danger;
+    color: v.$color-bg-secondary;
+
+    &:hover {
+      background-color: v.$btn-color-danger-hover;
+    }
+  }
+}
+
+.btn-form {
+  flex: 1;
+  display: flex;
+
+  button.btn {
+    flex: 1;
+  }
+}

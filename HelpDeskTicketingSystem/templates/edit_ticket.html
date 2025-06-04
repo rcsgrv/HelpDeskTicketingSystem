@@ -2,59 +2,50 @@
 {% block title %} Edit Ticket {% endblock %}
 {% block content %}
   <h2>Edit Ticket</h2>
-  <form method="POST" class="form">
+  <form method="POST" id="editTicketForm" class="form">
 
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" name="subject" value="{{ ticket.subject }}"/>
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" value="{{ ticket.subject | default('') }}" />
 
-    <label for="description">Description</label>
-    <textarea id="description" name="description">{{ ticket.description }}</textarea>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description">{{ ticket.description | default('') }}</textarea>
 
     {% if current_user.account_type == 'Administrator' %}
       <label for="status">Status:</label>
-        <select id="status" name="status">
-          <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
-          <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
-          <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
-        </select>
+      <select id="status" name="status">
+        <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
+        <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
+        <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
+      </select>
 
       <label for="priority">Priority:</label>
-        <select id="priority" name="priority">
-          <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
-          <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
-          <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
-        </select>
+      <select id="priority" name="priority">
+        <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
+        <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
+        <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
+      </select>
 
     {% else %}
       <label for="status">Status:</label>
-        <select id="status" disabled>
-          <option value="Open" {% if status == 'Open' %}selected{% endif %}>Open</option>
-          <option value="In Progress" {% if status == 'In Progress' %}selected{% endif %}>In Progress</option>
-          <option value="Closed" {% if status == 'Closed' %}selected{% endif %}>Closed</option>
-        </select>
-        <input type="hidden" name="status" value="{{ status }}">
+      <select id="status" disabled>
+        <option value="{{ status }}" selected>{{ status }}</option>
+      </select>
+      <input type="hidden" name="status" value="{{ status }}">
 
       <label for="priority">Priority:</label>
-        <select id="priority" disabled>
-          <option value="Low" {% if priority == 'Low' %}selected{% endif %}>Low</option>
-          <option value="Normal" {% if priority == 'Normal' %}selected{% endif %}>Normal</option>
-          <option value="High" {% if priority == 'High' %}selected{% endif %}>High</option>
-        </select>
-        <input type="hidden" name="priority" value="{{ priority }}">
-      {% endif %}
-    
-    {% if current_user.account_type == 'Administrator' %}
-      <label for="estimated_time">Estimated Time (in hours):</label>
-        <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5" min="1">
-    {% else %}
-      <label for="estimated_time">Estimated Time (in hours):</label>
-        <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5" min="1" readonly>
+      <select id="priority" disabled>
+        <option value="{{ priority }}" selected>{{ priority }}</option>
+      </select>
+      <input type="hidden" name="priority" value="{{ priority }}">
     {% endif %}
+
+    <label for="estimated_time">Estimated Time (in hours):</label>
+    <input type="number" id="estimated_time" name="estimated_time" value="{{ ticket.estimated_time }}" step="0.5"
+           {% if current_user.account_type != 'Administrator' %}readonly{% endif %}>
 
     <div class="btn-group">
       <a href="{{ url_for('tickets.ticket_details', ticket_id=ticket.id) }}" class="btn btn-group btn-secondary">Cancel</a>
-      <button type="submit" class="btn btn-group btn-primary">Save</button>
+      <button type="submit" form="editTicketForm" class="btn btn-group btn-primary">Save</button>
     </div>
-
   </form>
 {% endblock %}
