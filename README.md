@@ -64,7 +64,7 @@ This will launch the app at http://127.0.0.1:5000/.
 
 Alternatively, the application is currently hosted on Render and can be accessed via the following URL: https://help-desk-ticketing-system-eucm.onrender.com
 
-## Administrator Access
+## Administrator Registration
 
 To improve security, a 2-step process has been implemented for users wanting to register as Administrators. Upon selecting the Administrator account type on the Registration page, users will be prompted to input an administrator verification code. 
 
