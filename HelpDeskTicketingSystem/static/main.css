@@ -17,16 +17,16 @@ h2 {
   margin: 0 auto;
   text-align: center;
   margin-bottom: 24px;
-  background-color: #007BFF;
+  background-color: #4C6C85;
   color: #fff;
 }
 
 a {
-  color: #007BFF;
+  color: #4C6C85;
   text-decoration: none;
 }
 a:hover, a:focus {
-  color: #0062cc;
+  color: #395265;
 }
 
 p {
@@ -43,7 +43,7 @@ p {
 
 .navbar {
   width: 100%;
-  background-color: #007BFF;
+  background-color: #4C6C85;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 0;
 }
@@ -83,7 +83,7 @@ p {
   transition: background-color 0.2s;
 }
 .navbar .navbar-links a:hover {
-  background-color: #0062cc;
+  background-color: #395265;
 }
 
 .alert {
@@ -139,7 +139,7 @@ p {
 .form select:focus,
 .form textarea:focus {
   outline: none;
-  border-color: #007BFF;
+  border-color: #4C6C85;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 .form input,
@@ -161,7 +161,7 @@ p {
 
 .btn-new-ticket {
   display: inline-block;
-  background-color: #007BFF;
+  background-color: #4C6C85;
   color: #fff;
   padding: 10px 20px;
   font-size: 1rem;
@@ -172,7 +172,7 @@ p {
   transition: background-color 0.2s ease;
 }
 .btn-new-ticket:hover, .btn-new-ticket:focus {
-  background-color: #0062cc;
+  background-color: #395265;
   color: #fff;
   text-decoration: none;
 }
@@ -208,8 +208,9 @@ p {
 
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  max-width: 800px;
   gap: 12px;
   margin-top: 24px;
   font-weight: 600;
@@ -217,9 +218,9 @@ p {
   font-size: 1rem;
 }
 .pagination a.btn {
-  background-color: #007BFF;
+  background-color: #4C6C85;
   color: #fff;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border-radius: 6px;
   border: none;
   font-weight: 700;
@@ -228,7 +229,7 @@ p {
   transition: background-color 0.2s;
 }
 .pagination a.btn:hover, .pagination a.btn:focus {
-  background-color: #0062cc;
+  background-color: #395265;
   outline: none;
 }
 
@@ -275,12 +276,12 @@ p {
   font-weight: 700;
   border: none;
   border-radius: 6px;
-  background: #007BFF;
+  background: #4C6C85;
   color: #fff;
   cursor: pointer;
 }
 .entity-card--list .btn-primary:hover, .entity-card--list .btn-primary:focus {
-  background: #0062cc;
+  background: #395265;
 }
 .entity-card--list .entity-title {
   font-size: 2rem;
@@ -341,25 +342,25 @@ p {
   text-decoration: none;
 }
 .btn-group.btn-primary {
-  background-color: #007BFF;
+  background-color: #4C6C85;
   color: #fff;
 }
 .btn-group.btn-primary:hover {
-  background-color: #0062cc;
+  background-color: #395265;
 }
 .btn-group.btn-secondary {
   background-color: #fff;
-  color: #007BFF;
+  color: #4C6C85;
 }
 .btn-group.btn-secondary:hover {
-  color: #0062cc;
+  color: #395265;
 }
 .btn-group.btn-danger {
-  background-color: #dc3545;
+  background-color: #ce6277;
   color: #fff;
 }
 .btn-group.btn-danger:hover {
-  background-color: #bd2130;
+  background-color: #c13c56;
 }
 
 .btn-form {

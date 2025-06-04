@@ -23,6 +23,8 @@ def populate_seed_data():
     db.session.add_all(users)
     db.session.commit()
 
+    users = User.query.all()
+
     # 10 tickets
     subjects = [
         'Candidate - Schedule - Performance',
@@ -49,7 +51,7 @@ def populate_seed_data():
         'Users are unable to login to Eclipse if a live list exists that contains a search option that uses a stored proc.'
     ]
     statuses = ['Open', 'In Progress', 'Closed']
-    priorities = ['Low', 'Medium', 'High']
+    priorities = ['Low', 'Normal', 'High']
     estimated_times = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
 
     tickets = []
