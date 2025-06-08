@@ -28,5 +28,10 @@ content %}
   <div class="btn-group">
     <button type="submit" class="btn btn-group btn-primary">Submit</button>
   </div>
+
+  <p>
+    Already have an account?
+    <a href="{{ url_for('auth.login') }}"><strong>Login</strong></a>
+  </p>
 </form>
 {% endblock %}
