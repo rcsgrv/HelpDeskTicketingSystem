@@ -66,11 +66,17 @@ Alternatively, the application is currently hosted on Render and can be accessed
 
 ## Seed Data
 
-When the application is ran for the first time, seed data will be generated. This seed data consists of 10 users and 10 tickets. The users email addresses and passwords will be in the following format:
+When the application is ran for the first time, seed data will be generated. This seed data consists of 10 users and 10 tickets. 
 
-- Email Address: user1@example.com
-- Password: password1
+- The first user is an Administrator with the following credentials:
+- - Email Address: user1@example.com
+- - Password: password1
 
+- The remaining 9 users are Regular Users, following the same pattern:
+- - Email: user{n}@example.com
+- - Password: password{n}
+
+Where {n} ranges from 2 to 10 (e.g. user2@example.com / password2, user3@example.com / password3, etc.).
 
 ## Administrator Registration
 
