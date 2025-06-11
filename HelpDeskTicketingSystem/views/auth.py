@@ -5,6 +5,8 @@ from HelpDeskTicketingSystem.utils.registration_helper import validate_registrat
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db, login_manager
 
+# The basis of this work would not have been possible without the tutorial from Tech With Tim (Tech With Tim, 2021).
+
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
