@@ -151,7 +151,7 @@ p {
 }
 .form textarea {
   min-height: 100px;
-  resize: vertical;
+  resize: none;
 }
 
 .create-ticket-wrapper {
