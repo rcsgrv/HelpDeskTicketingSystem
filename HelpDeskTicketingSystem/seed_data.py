@@ -14,7 +14,7 @@ def populate_seed_data():
         user = User(
             forename=f'User{i}',
             surname='Test',
-            email=f'user{i}@example.com',
+            email=f'user{i}@test.com',
             password=generate_password_hash(f'password{i}'),
             account_type='Administrator' if i == 1 else 'Regular User'
         )

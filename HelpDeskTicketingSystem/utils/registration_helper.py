@@ -1,4 +1,7 @@
 from email_validator import validate_email, EmailNotValidError
+
+# This function validates all fields on the registration page (register.html).
+
 def validate_registration_form(forename, surname, email, password, password_confirm, account_type, user):
     if not forename or len(forename.strip()) < 1:
         return 'Forename cannot be blank.'
@@ -25,4 +28,6 @@ def validate_registration_form(forename, surname, email, password, password_conf
         return 'Your passwords do not match.'
     if not account_type:
         return 'You must select an account type.'
+    if account_type not in ('Regular User', 'Administrator'):
+        return 'Invalid account type selected.'
     return None

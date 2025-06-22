@@ -2,6 +2,10 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from HelpDeskTicketingSystem.models.TicketModel import Ticket
 
+# This Blueprint handles the home page route, displaying a paginated list of tickets.
+# Administrators see all tickets, while regular users see only their own.
+# Access is restricted to logged-in users. 
+
 home_bp = Blueprint('home', __name__)
 
 @home_bp.route('/')

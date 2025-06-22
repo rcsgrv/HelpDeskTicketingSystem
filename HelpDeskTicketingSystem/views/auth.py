@@ -7,6 +7,12 @@ from ..extensions import db, login_manager
 
 # The basis of this work would not have been possible without the tutorial from Tech With Tim (Tech With Tim, 2021).
 
+# This Blueprint manages user authentication and registration, including login, logout, 
+# user registration with form validation, and administrator account verification 
+# via a secure administrator verification code. Session storage is used to temporarily store registration data 
+# for administrator users pending verification.
+# Password hashing is used for security purposes, and Flask-Login is used for user session management and access control.
+
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
@@ -99,7 +105,7 @@ def admin_code():
         pending_user = session.get('pending_user')
 
         if not pending_user:
-            flash('Session expired. Please fill out the registration form again.', category='error')
+            flash('Session expired. Please complete the registration form again.', category='error')
             return redirect(url_for('auth.register'))
 
         if submitted_code == correct_code:

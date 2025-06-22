@@ -4,6 +4,11 @@ from HelpDeskTicketingSystem.models.TicketModel import Ticket
 from HelpDeskTicketingSystem.utils.ticket_helper import validate_ticket_form, render_ticket_form
 from ..extensions import db
 
+# This Blueprint handles ticket management functionality including creating, viewing, editing, 
+# and deleting tickets. This Blueprint enforces user authentication and access control, allowing only ticket owners 
+# or administrators to view or modify tickets.
+# Form validation is used to ensure data integrity before database operations are performed, and appropriate user feedback is provided via flash messages. 
+
 tickets_bp = Blueprint('tickets', __name__)
 
 @tickets_bp.route('/create_ticket', methods=['GET', 'POST'])

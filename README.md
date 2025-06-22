@@ -1,10 +1,10 @@
 # Help Desk Ticketing System
 
-The Help Desk Ticketing System is a lightweight, full-featured web application built with Flask, SQLAlchemy, SCSS, and HTML. It enables users to create, view, update, and manage  tickets in an organised and efficient way. Designed with responsiveness and usability in mind, the system is suitable for both internal teams and client-facing environments. 
+The Help Desk Ticketing System is a lightweight web application built with Flask, SQLAlchemy, SCSS, and HTML. The application enables users to create, view, update, and manage tickets in an organised and efficient way. Designed with responsiveness and usability in mind, the system is suitable for both internal teams and client-facing environments. 
 
 ## Features
 
-- Create, view, edit, and delete help desk tickets
+- Create, view, edit, and delete  tickets
 - Secure administration registration and login with password hashing
 - Responsive and accessible user interface styled with SCSS and HTML
 - Flash alerts for real-time feedback on user actions (success/error)
@@ -37,24 +37,24 @@ This separation of concerns ensures modularity, scalability, and ease of mainten
 
 ## Getting Started
 
-## Prerequisites
+### Prerequisites
 
 Ensure Python 3 is installed. It is also recommended to use a virtual environment:
 
 1) To create the virtual environment run the following in the terminal: py -m venv venv
 2) To activate the virtual environment run the following in the terminal: venv\Scripts\activate
 
-## Repository
+### Repository
 
 Clone the repository which is located at: https://github.com/rcsgrv/HelpDeskTicketingSystem.git
 
-## Install Dependencies
+### Install Dependencies
 
 Install required packages:
 
 pip install -r requirements.txt
 
-## Running the Application
+### Running the Application
 
 To start the Flask development server, run:
 
@@ -64,7 +64,7 @@ This will launch the app at http://127.0.0.1:5000/.
 
 Alternatively, the application is currently hosted on Render and can be accessed via the following URL: https://help-desk-ticketing-system-eucm.onrender.com
 
-## Seed Data
+### Seed Data
 
 When the application is ran for the first time, seed data will be generated. This seed data consists of 10 users and 10 tickets. 
 
@@ -78,8 +78,22 @@ When the application is ran for the first time, seed data will be generated. Thi
 
 Where {n} ranges from 2 to 10 (e.g. user2@example.com / password2, user3@example.com / password3, etc.).
 
-## Administrator Registration
+### Administrator Registration
 
 To improve security, a 2-step process has been implemented for users wanting to register as Administrators. Upon selecting the Administrator account type on the Registration page, users will be prompted to input an administrator verification code. 
 
 This code has been hardcoded but serves as a proof of concept for this assignment. The code is currently: 53c17e4d8efdafeddd375e53e4689cc757f1f322ef4595caedc3e85e2fb79c4e
+
+## Testing
+
+The Help Desk Ticketing System includes comprehensive unit tests covering key functionality such as user authentication, ticket creation, viewing, editing, and deletion. These tests use the Pytest framework along with mocking techniques to isolate components and validate behaviour without requiring a live database or full application context.
+
+### Unit Tests
+To run the unit tests locally, ensure your virtual environment is activated and dependencies are installed. Then execute:
+
+pytest
+
+This command will discover and run all tests in the tests/ directory and provide a detailed report of the results.
+
+### Manual Testing
+In addition to the unit tests, the application has been thoroughly manually tested to ensure that all user interactions, including registration, login, ticket management, and permissions, function as expected across typical use cases.
