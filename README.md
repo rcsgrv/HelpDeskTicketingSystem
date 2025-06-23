@@ -51,7 +51,9 @@ venv\Scripts\activate
 
 ### Repository
 
-Clone the repository which is located at: https://github.com/rcsgrv/HelpDeskTicketingSystem.git
+Clone the repository which is located at: 
+
+https://github.com/rcsgrv/HelpDeskTicketingSystem.git
 
 ### Install Dependencies
 
