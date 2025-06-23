@@ -11,8 +11,8 @@ The Help Desk Ticketing System is a lightweight web application built with Flask
 - Paginated ticket listings with configurable items per page
 - Dynamic ticket forms with input validation
 - Modular and maintainable codebase using Flask blueprints
-- Built-in SQLite database managed via SQLAlchemy ORM
-- Clean separation of concerns between routes (`views/`), templates, and stylesheets
+- Built-in SQLite database managed via SQLAlchemy ORM (Object Relational Mapper)
+- Clean separation of concerns between routes, templates, and stylesheets
 
 ## Technologies Used
 
@@ -39,10 +39,15 @@ This separation of concerns ensures modularity, scalability, and ease of mainten
 
 ### Prerequisites
 
-Ensure Python 3 is installed. It is also recommended to use a virtual environment:
+Ensure Python 3 is installed. It is also recommended to use a virtual environment.
 
-1) To create the virtual environment run the following in the terminal: py -m venv venv
-2) To activate the virtual environment run the following in the terminal: venv\Scripts\activate
+To create the virtual environment run the following in the terminal: 
+
+py -m venv venv
+
+To activate the virtual environment run the following in the terminal: 
+
+venv\Scripts\activate
 
 ### Repository
 
@@ -50,11 +55,15 @@ Clone the repository which is located at: https://github.com/rcsgrv/HelpDeskTick
 
 ### Install Dependencies
 
-Install required packages: pip install -r requirements.txt
+Install required packages: 
+
+pip install -r requirements.txt
 
 ### Running the Application
 
-To start the Flask development server, run: py main.py
+To start the Flask development server run: 
+
+py main.py
 
 This will launch the app at http://127.0.0.1:5000/.
 
@@ -78,16 +87,20 @@ Where {n} ranges from 2 to 10 (e.g. user2@example.com / password2, user3@example
 
 To improve security, a 2-step process has been implemented for users wanting to register as Administrators. Upon selecting the Administrator account type on the Registration page, users will be prompted to input an administrator verification code. 
 
-This code has been hardcoded but serves as a proof of concept for this assignment. The code is currently: 53c17e4d8efdafeddd375e53e4689cc757f1f322ef4595caedc3e85e2fb79c4e
+This code has been hardcoded but serves as a proof of concept for this assignment. The code is currently: 
+
+53c17e4d8efdafeddd375e53e4689cc757f1f322ef4595caedc3e85e2fb79c4e
 
 ## Testing
 
 The Help Desk Ticketing System includes comprehensive unit tests covering key functionality such as user authentication, ticket creation, viewing, editing, and deletion. These tests use the Pytest framework along with mocking techniques to isolate components and validate behaviour without requiring a live database or full application context.
 
 ### Unit Tests
-To run the unit tests locally, ensure your virtual environment is activated and dependencies are installed. Then execute: pytest
+To run the unit tests locally, ensure your virtual environment is activated and dependencies are installed. Then execute: 
 
-This command will discover and run all tests in the tests/ directory and provide a detailed report of the results.
+pytest
+
+This command will discover and run all tests in the `tests/` directory and provide a detailed report of the results.
 
 ### Manual Testing
 In addition to the unit tests, the application has been thoroughly manually tested to ensure that all user interactions, including registration, login, ticket management, and permissions, function as expected across typical use cases.
