@@ -5,7 +5,7 @@ from HelpDeskTicketingSystem.utils.registration_helper import validate_registrat
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db, login_manager
 
-# The basis of this work would not have been possible without the tutorial from Tech With Tim (Tech With Tim, 2021).
+# Route logic, Blueprints, basic HTML, and database configurationg were implemented with guidance from a tutorial by Tech With Tim (Tech With Tim, 2021).
 
 # This Blueprint manages user authentication and registration, including login, logout, 
 # user registration with form validation, and administrator account verification 

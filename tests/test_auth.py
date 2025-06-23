@@ -9,6 +9,8 @@ from werkzeug.security import generate_password_hash
 # such as database queries, password checks, session management, and template rendering, allowing
 # each route's logic to be tested without requiring a full application context or real database interactions.
 
+# Unit tests were implemented with guidance from a tutorial by Corey Schafer (Corey Schafer, 2017).
+
 @pytest.fixture
 def mock_user():
     user = MagicMock()
