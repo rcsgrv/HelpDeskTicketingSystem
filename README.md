@@ -57,7 +57,7 @@ https://github.com/rcsgrv/HelpDeskTicketingSystem.git
 
 ### Install Dependencies
 
-To innstall required packages run the following in the terminal: 
+To install required packages run the following in the terminal: 
 
 pip install -r requirements.txt
 
