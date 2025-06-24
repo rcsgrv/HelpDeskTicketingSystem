@@ -57,13 +57,13 @@ https://github.com/rcsgrv/HelpDeskTicketingSystem.git
 
 ### Install Dependencies
 
-Install required packages: 
+To innstall required packages run the following in the terminal: 
 
 pip install -r requirements.txt
 
 ### Running the Application
 
-To start the Flask development server run: 
+To start the Flask development server run the following in the terminal: 
 
 py main.py
 
@@ -98,7 +98,7 @@ This code has been hardcoded but serves as a proof of concept for this assignmen
 The Help Desk Ticketing System includes comprehensive unit tests covering key functionality such as user authentication, ticket creation, viewing, editing, and deletion. These tests use the Pytest framework along with mocking techniques to isolate components and validate behaviour without requiring a live database or full application context.
 
 ### Unit Tests
-To run the unit tests locally, ensure your virtual environment is activated and dependencies are installed. Then execute: 
+To run the unit tests locally, ensure your virtual environment is activated and dependencies are installed, then run the following in the terminal: 
 
 pytest
 
