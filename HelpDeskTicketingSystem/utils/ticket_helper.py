@@ -1,6 +1,6 @@
 # This function validates all fields on the edit ticket page and the create ticket page (create_ticket.html and edit_ticket.html).
 
-def validate_ticket_form(subject, description, priority, status, estimated_time):
+def validate_ticket_form(subject, description, status, priority, estimated_time):
     if not subject or len(subject.strip()) < 1:
         return 'Subject cannot be blank.'
     if len(subject) > 100:
@@ -9,10 +9,10 @@ def validate_ticket_form(subject, description, priority, status, estimated_time)
         return 'Description cannot be blank.'
     if len(description) > 500:
         return 'Description must not exceed 500 characters.'
-    if not priority:
-        return 'You must select a priority.'
     if not status:
         return 'You must select a status.'
+    if not priority:
+        return 'You must select a priority.'
     try:
         estimated_time_val = float(estimated_time)
         if estimated_time_val < 1:

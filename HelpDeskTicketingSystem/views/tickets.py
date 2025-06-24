@@ -21,7 +21,7 @@ def create_ticket():
         priority = request.form.get('priority')
         estimated_time = request.form.get('estimated_time')
 
-        error = validate_ticket_form(subject, description, priority, status, estimated_time)
+        error = validate_ticket_form(subject, description, status, priority, estimated_time)
         if error:
             return render_ticket_form(
                 'create_ticket.html',
@@ -29,16 +29,16 @@ def create_ticket():
                 user=current_user,
                 subject=subject,
                 description=description,
-                priority=priority,
                 status=status,
+                priority=priority,
                 estimated_time=estimated_time
             )
 
         new_ticket = Ticket(
             subject=subject,
             description=description,
-            priority=priority,
             status=status,
+            priority=priority,
             estimated_time=float(estimated_time),
             user_id=current_user.id
         )
@@ -89,7 +89,7 @@ def edit_ticket(ticket_id):
             status = request.form.get('status')
             priority = request.form.get('priority')
 
-        error = validate_ticket_form(subject, description, priority, status, estimated_time)
+        error = validate_ticket_form(subject, description, status, priority, estimated_time)
         if error:
             return render_ticket_form(
                 'edit_ticket.html',
